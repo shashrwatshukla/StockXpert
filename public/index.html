@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StockXpert | A Stock Analysis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/engine@3/tsparticles.engine.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/slim@3/tsparticles.slim.min.js"></script>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/script.js" defer></script>
+</head>
+<body>
+    <div id="tsparticles"></div>
+
+    <div class="main-grid">
+        <header class="main-header">
+            <h1 class="header-title">STOCKXPERT</h1>
+            <div class="stock-selector-wrapper">
+                <select id="stock-select" class="select-box"></select>
+            </div>
+        </header>
+
+        <aside class="sidebar" id="portfolio-section">
+            <div class="portfolio-header">
+                <h2 class="sidebar-title">Portfolio</h2>
+                <button id="toggle-portfolio" class="btn-icon">▼</button>
+            </div>
+            <div class="portfolio-content">
+                <div class="portfolio-input-area">
+                    <textarea id="portfolio-input" rows="2" placeholder="SYMBOL:QTY, SYMBOL:QTY"></textarea>
+                    <button id="save-portfolio-btn" class="btn">Save</button>
+                </div>
+                <div id="portfolio-list" class="portfolio-list"></div>
+                <div class="portfolio-summary">
+                    <h3>Total Value</h3>
+                    <p id="portfolio-total-value">₹0.00</p>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="controls-bar card">
+                <div class="control-group">
+                    <label>Date Range</label>
+                    <div class="button-group" id="range-buttons">
+                        <button class="btn-range active" data-range="1d">1D</button>
+                        <button class="btn-range" data-range="5d">5D</button>
+                        <button class="btn-range" data-range="1m">1M</button>
+                        <button class="btn-range" data-range="6m">6M</button>
+                        <button class="btn-range" data-range="1y">1Y</button>
+                        <button class="btn-range" data-range="5y">5Y</button>
+                        <button class="btn-range" data-range="max">MAX</button>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label for="start-date">Start</label>
+                    <input type="date" id="start-date" class="date-input">
+                </div>
+                <div class="control-group">
+                    <label for="end-date">End</label>
+                    <input type="date" id="end-date" class="date-input">
+                </div>
+                <div class="control-group">
+                    <label for="chart-type">Chart</label>
+                    <select id="chart-type" class="select-box">
+                        <option value="Candlestick">Candlestick</option>
+                        <option value="Line">Line</option>
+                        <option value="Area">Area</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="message-box" class="message-box" style="display: none;"></div>
+            <div id="loading-indicator" class="loading-indicator" style="display: none;">
+                <div class="spinner"></div>
+                <p>Loading <span id="loading-ticker-symbol"></span>...</p>
+            </div>
+
+            <div id="charts-container" style="display: none;">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 id="main-chart-title">Price Analysis</h2>
+                    </div>
+                    <div id="main-chart" class="plot-container"></div>
+                </div>
+                
+                <div class="secondary-charts-grid">
+                    <div class="card">
+                        <div class="card-header"><h2>Volume</h2></div>
+                        <div id="volume-chart" class="plot-container small"></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header"><h2>MACD</h2></div>
+                        <div id="macd-chart" class="plot-container small"></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header"><h2>RSI (14)</h2></div>
+                        <div id="rsi-chart" class="plot-container small"></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header"><h2>ATR</h2></div>
+                        <div id="atr-chart" class="plot-container small"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="info-container" style="display: none;">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 id="company-name">Company Information</h2>
+                    </div>
+                    <div class="info-grid">
+                        <div class="info-item"><span>Symbol</span><p id="info-symbol">--</p></div>
+                        <div class="info-item"><span>Sector</span><p id="info-sector">--</p></div>
+                        <div class="info-item"><span>Industry</span><p id="info-industry">--</p></div>
+                        <div class="info-item"><span>Website</span><p><a id="info-website" href="#" target="_blank">--</a></p></div>
+                    </div>
+                    <p id="info-summary" class="company-summary">...</p>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="card metric-card"><h3>Market Cap</h3><p id="metric-marketCap">--</p></div>
+                    <div class="card metric-card"><h3>P/E Ratio</h3><p id="metric-peRatio">--</p></div>
+                    <div class="card metric-card"><h3>EPS</h3><p id="metric-eps">--</p></div>
+                    <div class="card metric-card"><h3>Div. Yield</h3><p id="metric-divYield">--</p></div>
+                    <div class="card metric-card"><h3>52W High</h3><p id="metric-52wHigh">--</p></div>
+                    <div class="card metric-card"><h3>52W Low</h3><p id="metric-52wLow">--</p></div>
+                    <div class="card metric-card"><h3>Avg Volume</h3><p id="metric-avgVolume">--</p></div>
+                    <div class="card metric-card"><h3>Beta</h3><p id="metric-beta">--</p></div>
+                </div>
+
+                <div class="similar-news-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 id="similar-stocks-title">Similar Stocks</h2>
+                        </div>
+                        <div id="similar-stocks-list" class="similar-stocks-list"></div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Latest News</h2>
+                        </div>
+                        <div id="news-container" class="news-list"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer class="main-footer">
+            <p>&copy; 2025 StockXpert | A Stock Analysis</p>
+            <p class="disclaimer">Data provided by Yahoo Finance. Not financial advice.</p>
+        </footer>
+    </div>
+</body>
+</html>
