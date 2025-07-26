@@ -1,5 +1,5 @@
 ````markdown
-<h1 align="center">📈 StockXpert: Advanced Stock Analysis </h1>
+<h1 align="center">📈 StockXpert: Advanced Stock Analysis</h1>
 
 <h3 align="center"><i>Track, Analyze, and Visualize Indian Stock Market Smarter</i></h3>
 
