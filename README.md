@@ -1,5 +1,9 @@
 ````markdown
-# 📈 StockXpert: Advanced Stock Analysis Dashboard
+<h1 align="center">📈 StockXpert: Advanced Stock Analysis </h1>
+
+<h3 align="center"><i>Track, Analyze, and Visualize Indian Stock Market Smarter</i></h3>
+
+
 
 <div align="center">
   <img src="YOUR_IMAGE_LINK_HERE" alt="StockXpert Dashboard Preview" width="800"/>
