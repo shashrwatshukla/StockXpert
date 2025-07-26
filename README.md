@@ -50,7 +50,7 @@ Node.js v16+ and npm
 Backend Setup (FastAPI)
 Clone the Repository
 
-git clone https://github.com/your-username/StockXpert.git
+git clone https://github.com/shashrwatshukla/StockXpert.git
 cd StockXpert
 
 Set Up Backend (FastAPI)
