@@ -1,7 +1,8 @@
 📈 StockXpert: Advanced Stock Analysis
 Track, Analyze, and Visualize Indian Stock Market Smarter
 <div align="center">
-<img src="YOUR_IMAGE_LINK_HERE" alt="StockXpert Dashboard Preview" width="800"/>
+<img src="https://github.com/shashrwatshukla/StockXpert/blob/main/Screenshot%202025-07-27%20000229.png?raw=true" alt="StockXpert Dashboard Preview" width="800"/>
+<img src="https://github.com/shashrwatshukla/StockXpert/blob/main/Screenshot%202025-07-27%20000255.png?raw=true" alt="StockXpert Dashboard Preview" width="800"/>
 </div>
 
 <p align="center">
@@ -38,6 +39,12 @@ Tech Stack 🛠️
 <img src="https://img.shields.io/badge/Plotly.js-3F4F75?style=for-the-badge&logo=plotly&logoColor=white" alt="Plotly.js Badge"/>
 </p>
 
+More Images
+<img src="https://github.com/shashrwatshukla/StockXpert/blob/main/Screenshot%202025-07-27%20000242.png?raw=truee" alt="StockXpert Dashboard Preview" width="800"/>
+<img src="https://github.com/shashrwatshukla/StockXpert/blob/main/Screenshot%202025-07-27%20000308.png?raw=true" alt="StockXpert Dashboard Preview" width="800"/>
+
+
+
 
 Installation 🚀
 Follow these steps to set up and run the StockXpert backend on your local machine.
@@ -73,11 +80,18 @@ uvicorn api.index:app --reload --port 8000
 
 Runs at → http://127.0.0.1:8000
 
+
 Contributing 🤝
 We ❤️ contributions! Thanks to everyone who helped shape this project.
 
-👤 Contributor
-@ishashwatthakur – Core developer, designer & project maintainer 🎯
+## 👤 Project Maintainer  
+[**Shashrwat Shukla**](https://github.com/shashrwatshukla) – Core Developer, Designer & Project Maintainer 🎯
+
+---
+
+## 👥 Contributors  
+[**Shashwat Pratap Singh**](https://github.com/ishashwatthakur) – Core Developer, Designer & Project Maintainer 🎯
+
 
 To contribute:
 
