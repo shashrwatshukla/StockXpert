@@ -8,31 +8,9 @@ Track, Analyze, and Visualize Indian Stock Market Smarter
 <em>A powerful, full-stack dashboard to analyze Indian stocks using interactive charts, indicators, technical tools, and real-time news.</em>
 </p>
 
-Table of Contents
-About StockXpert
-
-Screenshots
-
-Features
-
-Tech Stack
-
-Languages Used
-
-Project Structure
-
-Installation
-
-Running the Application
-
-Contributing
-
-Disclaimer
-
-License
-
 About StockXpert
 StockXpert is a dynamic and comprehensive web application meticulously crafted for in-depth analysis of Indian stocks. It provides a robust suite of tools including interactive charts with technical indicators, comprehensive company details, a personalized portfolio tracker, a smart stock discovery feature, and real-time news updates. Built with a powerful FastAPI backend and a responsive modern frontend, StockXpert ensures reliable data through yfinance and direct NSE scraping, enhanced with caching for optimal performance and speed.
+
 
 Screenshots
 (Showcase your application here! Add compelling screenshots or GIFs to highlight the interactive charts, portfolio manager, news feed, and responsive UI. Example Markdown for an image: ![Alt text for image](path/to/your/image.png) or ![Interactive Charts](https://your-image-host.com/chart-screenshot.png))
