@@ -1,0 +1,106 @@
+/* General page styling */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #0f172a;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* Container */
+.auth-container {
+    background: #1e293b;
+    padding: 2rem;
+    border-radius: 1rem;
+    width: 350px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.5);
+    text-align: center;
+}
+
+/* Logo */
+.logo {
+    font-size: 2rem;
+    font-weight: bold;
+    background: linear-gradient(90deg, #4f46e5, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1.5rem;
+}
+.logo span {
+    color: #9ca3af;
+}
+
+/* Tabs */
+.tab-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+}
+.tab-buttons button {
+    background: none;
+    border: none;
+    color: #9ca3af;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: 0.3s;
+}
+.tab-buttons button.active {
+    color: #fff;
+    border-bottom: 2px solid #4f46e5;
+}
+
+/* Forms */
+.form {
+    display: none;
+    flex-direction: column;
+}
+.form.active {
+    display: flex;
+}
+input {
+    background: #0f172a;
+    border: 1px solid #334155;
+    padding: 0.75rem;
+    margin: 0.5rem 0;
+    border-radius: 0.5rem;
+    color: #fff;
+    outline: none;
+}
+input:focus {
+    border-color: #06b6d4;
+}
+
+/* Button */
+.btn {
+    background: linear-gradient(90deg, #4f46e5, #06b6d4);
+    border: none;
+    padding: 0.75rem;
+    margin-top: 0.75rem;
+    border-radius: 0.5rem;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+.btn:hover {
+    opacity: 0.85;
+}
+
+/* Switch text */
+.switch-text {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #9ca3af;
+}
+.switch-text a {
+    color: #06b6d4;
+    cursor: pointer;
+    text-decoration: none;
+}
+.switch-text a:hover {
+    text-decoration: underline;
+}
