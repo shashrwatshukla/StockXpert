@@ -244,3 +244,4 @@ pids
 # API response cache files (if any)
 cache/
 *.cache
+.vercel
