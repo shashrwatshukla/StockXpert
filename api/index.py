@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.staticfiles import StaticFiles
-from pathlib import Path
+# from fastapi.staticfiles import StaticFiles  # Removed for Vercel deployment
+# from pathlib import Path  # Removed for Vercel deployment
 import yfinance as yf
 import pandas as pd
 import numpy as np
@@ -345,9 +345,11 @@ async def get_stock_news(symbol: str):
     except Exception as e:
         return {"news": [], "error": str(e)}
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-PUBLIC_DIR = BASE_DIR / "public"
-app.mount("/", StaticFiles(directory=PUBLIC_DIR, html=True), name="static")
+# Remove static file mounting for Vercel deployment
+# Vercel will handle static file serving automatically
+# BASE_DIR = Path(__file__).resolve().parent.parent
+# PUBLIC_DIR = BASE_DIR / "public"
+# app.mount("/", StaticFiles(directory=PUBLIC_DIR, html=True), name="static")
 
 @app.get("/")
 async def root():
